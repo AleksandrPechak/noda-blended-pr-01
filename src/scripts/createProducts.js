@@ -17,4 +17,4 @@ export const createProducts = async (amount) => {
   }
 };
 
-createProducts(5);
+createProducts(7);
