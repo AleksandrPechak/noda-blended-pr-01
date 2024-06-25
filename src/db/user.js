@@ -8,6 +8,7 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
+      unique: true,
       required: true,
     },
     password: {
@@ -20,15 +21,4 @@ const userSchema = new Schema(
   },
 );
 
-export const userCollection = model('user', userSchema);
-
-/* Створіть модель користувача User з такими полями:
-name - string, required
-email - string, email, unique, required
-password - string, required
-Створіть модель сесії Session з такими полями:
-userId - string, required
-accessToken - string, required
-refreshToken - string, required
-accessTokenValidUntil - Date, required
-refreshTokenValidUntil - Date, required */
+export const UserCollection = model('user', userSchema);
