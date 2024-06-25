@@ -1,6 +1,6 @@
 import { loginUser, registerUser } from '../services/user.js';
 
-export const registrerUserController = async (req, res) => {
+export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
 
   res.status(201).json({
