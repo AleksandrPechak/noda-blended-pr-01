@@ -1,10 +1,18 @@
-import { loginUser, registerUser } from '../services/user.js';
+import { findUserByEmail, loginUser, createUser } from '../services/user.js';
+import createHttpError from "http-errors";
 
 export const registerUserController = async (req, res) => {
-  const user = await registerUser(req.body);
+  const { email} = req.body;
+  const user = await findUserByEmail(email);
+  if (user) throw createHttpError(409, 'Email in use');
 
+  const newUser = await createUser(req.body);
   res.status(201).json({
-    data: { email: user.email, name: user.name },
+    user: {
+      name: newUser.name,
+      email: newUser.email,
+    },
+    token: newUser.token,
   });
 };
 

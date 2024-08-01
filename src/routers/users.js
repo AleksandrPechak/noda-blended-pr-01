@@ -7,7 +7,7 @@ import { loginUserController, registerUserController } from '../controllers/user
 const router = Router();
 
 router.post(
-  '/register',
+  '/signup',
   validateBody(registerUserSchema),
   ctrlWrapper(registerUserController),
 );
